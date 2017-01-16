@@ -1,3 +1,9 @@
+REQUIREMENTS:
+- npm
+  - browserify
+  - watchify
+  -babelify
+
 BUILD
 browserify components/index.js -o dist/bundle.js -t [ babelify --presets [ es2015 react ] ]
 

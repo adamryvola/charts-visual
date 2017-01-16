@@ -1,10 +1,10 @@
-//import vsech komponent, ktere pouzijeme vnitr komponenty App
+//import vsech komponent, ktere pouzijeme uvnitr komponenty App
 import Greeting from './Greeting';
 import Buttons from './Buttons';
 import NameEditor from './NameEditor';
 
-//diky "export default" muzeme tuto komponentu v jindem souboru importovat
-//tato trida rozsiruje tridu React.Component - to musi udelat kazda komponenta
+//diky "export default" muzeme tuto komponentu v jinem souboru importovat
+//tato trida rozsiruje tridu React.Component - to musi udelat kazda React komponenta
 export default class App extends React.Component {
 
   //klasicky kontruktor tridy
@@ -29,7 +29,7 @@ export default class App extends React.Component {
     });
   }
 
-  //funkce, ktera zvysi snizi counter ve stavu komponenty App -> zbusobi prekresleni
+  //funkce, ktera snizi counter ve stavu komponenty App -> zbusobi prekresleni
   decrease() {
     this.setState({
       counter: this.state.counter-1,
@@ -37,7 +37,7 @@ export default class App extends React.Component {
     })
   }
 
-  //funkce, ktera zvysi zmeni atribut name ve stavu komponenty App -> zbusobi prekresleni
+  //funkce, ktera zmenni atribut name ve stavu komponenty App -> zbusobi prekresleni
   changeName(newName) {
     this.setState({
       counter: this.state.counter,
@@ -45,7 +45,7 @@ export default class App extends React.Component {
     })
   }
 
-  //funkce pro vykresleni komponenty - pouzita syntaxe JSX!!
+  //funkce pro vykresleni komponenty - pouzita syntaxe JSX!! -> to, co vypada jako HTML uvnitr javascriptu
   //--
   //pokud chceme uvnitr JSX pouzit opet JavaScript, musime jej obalit do {},
   //proto jsou predavane atributy napsane jako name={this.props.name}
