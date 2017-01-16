@@ -16,4 +16,5 @@ http://g.onsz.cz/
 REPO
 https://github.com/nanookilla/APP
 
-GITHUB-PAGES https://adamryvola.github.io/charts-visual/
+GITHUB-PAGES
+https://adamryvola.github.io/charts-visual/
