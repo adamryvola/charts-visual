@@ -25,11 +25,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //import vsech komponent, ktere pouzijeme vnitr komponenty App
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //import vsech komponent, ktere pouzijeme uvnitr komponenty App
 
 
-//diky "export default" muzeme tuto komponentu v jindem souboru importovat
-//tato trida rozsiruje tridu React.Component - to musi udelat kazda komponenta
+//diky "export default" muzeme tuto komponentu v jinem souboru importovat
+//tato trida rozsiruje tridu React.Component - to musi udelat kazda React komponenta
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -63,7 +63,7 @@ var App = function (_React$Component) {
       });
     }
 
-    //funkce, ktera zvysi snizi counter ve stavu komponenty App -> zbusobi prekresleni
+    //funkce, ktera snizi counter ve stavu komponenty App -> zbusobi prekresleni
 
   }, {
     key: 'decrease',
@@ -74,7 +74,7 @@ var App = function (_React$Component) {
       });
     }
 
-    //funkce, ktera zvysi zmeni atribut name ve stavu komponenty App -> zbusobi prekresleni
+    //funkce, ktera zmenni atribut name ve stavu komponenty App -> zbusobi prekresleni
 
   }, {
     key: 'changeName',
@@ -85,7 +85,7 @@ var App = function (_React$Component) {
       });
     }
 
-    //funkce pro vykresleni komponenty - pouzita syntaxe JSX!!
+    //funkce pro vykresleni komponenty - pouzita syntaxe JSX!! -> to, co vypada jako HTML uvnitr javascriptu
     //--
     //pokud chceme uvnitr JSX pouzit opet JavaScript, musime jej obalit do {},
     //proto jsou predavane atributy napsane jako name={this.props.name}
