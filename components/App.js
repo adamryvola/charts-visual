@@ -18,7 +18,12 @@ export default class App extends React.Component {
     //kazdou metodu tridy musime "nabindovat" - abychom ji mohli volat jako 'this.myMethod()'
     this.increase = this.increase.bind(this);
     this.decrease = this.decrease.bind(this);
+    this.reset = this.reset.bind(this);
     this.changeName = this.changeName.bind(this);
+  }
+
+  componentDidUpdate() {
+    window.onChangeState(this.state);
   }
 
   //funkce, ktera zvysi hodnotu counter ve stavu komponenty App -> zbusobi prekresleni
@@ -33,6 +38,14 @@ export default class App extends React.Component {
   decrease() {
     this.setState({
       counter: this.state.counter-1,
+      name: this.state.name
+    })
+  }
+
+  //funkce, ktera resetuje counter na 0 ve stavu komponenty App -> zbusobi prekresleni
+  reset() {
+    this.setState({
+      counter: 0,
       name: this.state.name
     })
   }
@@ -57,7 +70,7 @@ export default class App extends React.Component {
       <div>
         <h1>Hello world</h1>
         <Greeting name={this.state.name} counter={this.state.counter} />
-        <Buttons plus={this.increase} minus={this.decrease} />
+        <Buttons plus={this.increase} minus={this.decrease} reset={this.reset} />
         <NameEditor onChangeName={this.changeName} />
       </div>
     );

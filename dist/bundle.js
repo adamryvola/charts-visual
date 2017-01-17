@@ -47,14 +47,20 @@ var App = function (_React$Component) {
     //kazdou metodu tridy musime "nabindovat" - abychom ji mohli volat jako 'this.myMethod()'
     _this.increase = _this.increase.bind(_this);
     _this.decrease = _this.decrease.bind(_this);
+    _this.reset = _this.reset.bind(_this);
     _this.changeName = _this.changeName.bind(_this);
     return _this;
   }
 
-  //funkce, ktera zvysi hodnotu counter ve stavu komponenty App -> zbusobi prekresleni
-
-
   _createClass(App, [{
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      window.onChangeState(this.state);
+    }
+
+    //funkce, ktera zvysi hodnotu counter ve stavu komponenty App -> zbusobi prekresleni
+
+  }, {
     key: 'increase',
     value: function increase() {
       this.setState({
@@ -70,6 +76,17 @@ var App = function (_React$Component) {
     value: function decrease() {
       this.setState({
         counter: this.state.counter - 1,
+        name: this.state.name
+      });
+    }
+
+    //funkce, ktera resetuje counter na 0 ve stavu komponenty App -> zbusobi prekresleni
+
+  }, {
+    key: 'reset',
+    value: function reset() {
+      this.setState({
+        counter: 0,
         name: this.state.name
       });
     }
@@ -105,7 +122,7 @@ var App = function (_React$Component) {
           'Hello world'
         ),
         React.createElement(_Greeting2.default, { name: this.state.name, counter: this.state.counter }),
-        React.createElement(_Buttons2.default, { plus: this.increase, minus: this.decrease }),
+        React.createElement(_Buttons2.default, { plus: this.increase, minus: this.decrease, reset: this.reset }),
         React.createElement(_NameEditor2.default, { onChangeName: this.changeName })
       );
     }
@@ -151,17 +168,24 @@ var Buttons = function (_React$Component) {
         null,
         React.createElement(
           "button",
-          { onClick: function onClick(e) {
+          { className: "btn btn-primary btn-lg", onClick: function onClick(e) {
               return _this2.props.plus();
             } },
           "+"
         ),
         React.createElement(
           "button",
-          { onClick: function onClick(e) {
+          { className: "btn btn-danger btn-lg", onClick: function onClick(e) {
               return _this2.props.minus();
             } },
           "-"
+        ),
+        React.createElement(
+          "button",
+          { className: "btn btn-success btn-lg", onClick: function onClick(e) {
+              return _this2.props.reset();
+            } },
+          "R"
         )
       );
     }
@@ -268,7 +292,13 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+window.onChangeState = function (state) {
+  console.log(state);
+  //TODO -> re-render d3 chart
+};
+
 //pomoci ReactDOM vykreslime komponentu App do elementu s id "content" (v index.html)
-ReactDOM.render(React.createElement(_App2.default, null), document.getElementById('content')); //import ROOT komponenty App
+//import ROOT komponenty App
+ReactDOM.render(React.createElement(_App2.default, null), document.getElementById('content'));
 
 },{"./App.js":1}]},{},[5]);
