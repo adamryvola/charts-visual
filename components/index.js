@@ -4,6 +4,10 @@ import App from './App.js';
 
 window.onChangeState = function(state) {
   console.log(state);
+
+  document.getElementById('graph').innerHTML="state";
+
+
   //TODO -> re-render d3 chart
 }
 

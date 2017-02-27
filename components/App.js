@@ -2,6 +2,7 @@
 import Greeting from './Greeting';
 import Buttons from './Buttons';
 import NameEditor from './NameEditor';
+import InputGroup from './InputGroup';
 
 //diky "export default" muzeme tuto komponentu v jinem souboru importovat
 //tato trida rozsiruje tridu React.Component - to musi udelat kazda React komponenta
@@ -72,6 +73,7 @@ export default class App extends React.Component {
         <Greeting name={this.state.name} counter={this.state.counter} />
         <Buttons plus={this.increase} minus={this.decrease} reset={this.reset} />
         <NameEditor onChangeName={this.changeName} />
+        <InputGroup items={[{type: "btn", text: "Prvni butt"}, {type: "addon", text: "Add-on desc"}, {type: "input", placeholder: "default value"}]} />
       </div>
     );
   }

@@ -1,0 +1,23 @@
+{
+  "name": "chart-visual",
+  "version": "1.0.0",
+  "description": "REQUIREMENTS:\r - npm\r   - browserify\r   - watchify\r   - babelify",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamryvola/charts-visual.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamryvola/charts-visual/issues"
+  },
+  "homepage": "https://github.com/adamryvola/charts-visual#readme",
+  "dependencies": {
+    "browserify": "^14.1.0",
+    "shared-components": "github:adamryvola/shared-components"
+  }
+}

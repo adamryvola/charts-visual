@@ -19,6 +19,10 @@ var _NameEditor = require('./NameEditor');
 
 var _NameEditor2 = _interopRequireDefault(_NameEditor);
 
+var _InputGroup = require('./InputGroup');
+
+var _InputGroup2 = _interopRequireDefault(_InputGroup);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -123,7 +127,8 @@ var App = function (_React$Component) {
         ),
         React.createElement(_Greeting2.default, { name: this.state.name, counter: this.state.counter }),
         React.createElement(_Buttons2.default, { plus: this.increase, minus: this.decrease, reset: this.reset }),
-        React.createElement(_NameEditor2.default, { onChangeName: this.changeName })
+        React.createElement(_NameEditor2.default, { onChangeName: this.changeName }),
+        React.createElement(_InputGroup2.default, { items: [{ type: "btn", text: "Prvni butt" }, { type: "addon", text: "Add-on desc" }, { type: "input", placeholder: "default value" }] })
       );
     }
   }]);
@@ -134,7 +139,7 @@ var App = function (_React$Component) {
 exports.default = App;
 ;
 
-},{"./Buttons":2,"./Greeting":3,"./NameEditor":4}],2:[function(require,module,exports){
+},{"./Buttons":2,"./Greeting":3,"./InputGroup":4,"./NameEditor":5}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -254,6 +259,87 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var InputGroup = function (_React$Component) {
+  _inherits(InputGroup, _React$Component);
+
+  function InputGroup() {
+    _classCallCheck(this, InputGroup);
+
+    var _this = _possibleConstructorReturn(this, (InputGroup.__proto__ || Object.getPrototypeOf(InputGroup)).call(this));
+
+    _this.hasButtonGroup = _this.hasButtonGroup.bind(_this);
+    return _this;
+  }
+
+  _createClass(InputGroup, [{
+    key: "hasButtonGroup",
+    value: function hasButtonGroup(items) {
+      for (var i = 1; i < items.length; i++) {
+        if (items[i - 1].type === "btn" && items[i - 1].type === items[i].type) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var items = this.props.items;
+      var hasGroup = this.hasButtonGroup(items);
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "h1",
+          null,
+          "Input Group"
+        ),
+        items.map(function (item) {
+          switch (item.type) {
+            case "btn":
+              if (hasGroup) {
+                return React.createElement("buttonGroup", null);
+              } else {
+                return React.createElement(
+                  "button",
+                  null,
+                  item.text
+                );
+              }
+            case "input":
+              return React.createElement("input", { placeholder: item.placeholder });
+            case "addon":
+              return React.createElement(
+                "span",
+                null,
+                item.text
+              );
+          }
+        })
+      );
+    }
+  }]);
+
+  return InputGroup;
+}(React.Component);
+
+exports.default = InputGroup;
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var NameEditor = function (_React$Component) {
   _inherits(NameEditor, _React$Component);
 
@@ -283,7 +369,7 @@ var NameEditor = function (_React$Component) {
 
 exports.default = NameEditor;
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var _App = require('./App.js');
@@ -294,6 +380,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 window.onChangeState = function (state) {
   console.log(state);
+
+  document.getElementById('graph').innerHTML = "state";
+
   //TODO -> re-render d3 chart
 };
 
@@ -301,4 +390,4 @@ window.onChangeState = function (state) {
 //import ROOT komponenty App
 ReactDOM.render(React.createElement(_App2.default, null), document.getElementById('content'));
 
-},{"./App.js":1}]},{},[5]);
+},{"./App.js":1}]},{},[6]);
